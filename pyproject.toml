@@ -1,0 +1,64 @@
+[build-system]
+requires = [
+  "setuptools >= 61.0.0",
+  "wheel",
+  "setuptools_scm[toml] >= 6.2"
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ascnii"
+description = "View brain images in terminal using ASCII characters"
+readme = "README.md"
+requires-python = ">=3.7"
+license = {file = "LICENSE.md"}
+authors = [
+    {email = "l.sasse@fz-juelich.de"},
+    {name = "Leonard Sasse"},
+]
+
+keywords = [
+    "neuroimaging",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved",
+    "Natural Language :: English",
+    "Topic :: Software Development",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Scientific/Engineering :: Bio-Informatics",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+]
+dependencies = [
+    "nilearn>=0.9.0,<1.0",
+    "ascii-magic>=1.6"
+]
+dynamic = ["version"]
+
+[project.urls]
+repository = "https://github.com/LeSasse/ascnii"
+
+[project.scripts]
+ascnii = "ascnii.ascnii:main"
+
+[project.optional-dependencies]
+dev = ["tox"]
+
+################
+# Tool configs #
+################
+
+[tool.setuptools]
+packages = ["ascnii"]
+
+[tool.setuptools_scm]
+version_scheme = "python-simplified-semver"
+local_scheme = "no-local-version"
+write_to = "ascnii/_version.py"
+
+[tool.black]
+line-length = 79
+target-version = ["py37"]
