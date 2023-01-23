@@ -3,9 +3,10 @@
 # Authors: Leonard Sasse <l.sasse@fz-juelich.de>
 # License: AGPL
 
+import os
 from argparse import ArgumentParser
 from pathlib import Path
-import os
+
 
 def parse_args():
     """Parse ascnii arguments."""

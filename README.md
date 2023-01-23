@@ -3,6 +3,9 @@
 If you always wanted to plot NIfTI images in terminal using ASCII characters,
 you can do so now using the command line tool `ascnii`.
 
+However, for now, `ascnii` assumes that the image is in MNI space, and will
+likely not work for other kinds of inputs (at the moment).
+
 # Set up:
 
 You may or may not want to set up a virtual environment.
