@@ -54,16 +54,19 @@ optional arguments:
 
 # Examples:
 
-## Simple default plot of an anatomical image (3D):
+## Simple default plot of an anatomical image (3D) on a small terminal window:
 
 `ascnii example_img.nii.gz`:
 
 ![plot](./examples/example_default.png)
 
-## Increase the resolution with the `--columns` option:
+You can also plot 4D NIfTI images, `ascnii` will simply plot the mean image.
 
-The `--columns` refers to the number of columns used in the terminal to display
-characters. Make sure to zoom out a bit, so your terminal has enough space and
+## Adjust the resolution with the `--columns` option:
+
+By default, `ascnii` will use the complete width of the terminal, but you may want
+to adjust width manually.
+Make sure to zoom out a bit, so your terminal has enough space and
 run `ascnii example_img.nii.gz --columns 600`:
 
 ![plot](./examples/example_columns.png)
@@ -73,6 +76,6 @@ run `ascnii example_img.nii.gz --columns 600`:
 In order to change the colormap choose any of the [matplotlib colormaps](https://matplotlib.org/stable/tutorials/colors/colormaps.html)
 and hand them over as strings to the `--colormap` option. At the same time you can
 also change the background color by handing any of the values listed for the
-`--background` option. Run `ascnii example_img.nii.gz -C 600 -m plasma -b white`:
+`--background` option. Run `ascnii example_img.nii.gz -m plasma -b white`:
 
 ![plot](./examples/example_color.png)

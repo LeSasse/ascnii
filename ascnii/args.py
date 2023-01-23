@@ -5,10 +5,11 @@
 
 from argparse import ArgumentParser
 from pathlib import Path
-
+import os
 
 def parse_args():
     """Parse ascnii arguments."""
+    columns, _ = os.get_terminal_size()
     background_colors = [
         "black",
         "red",
@@ -36,7 +37,7 @@ def parse_args():
     parser.add_argument(
         "-C",
         "--columns",
-        default=120,
+        default=columns,
         type=int,
         help="Number of character columns (in terminal) to use for plotting.",
     )
