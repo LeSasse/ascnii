@@ -42,7 +42,6 @@ def main():
         warnings.filterwarnings("ignore")
         mask = datasets.load_mni152_brain_mask()
     
-    mask = image.resample_to_img(mask, img)
     img = image.math_img("img * mask", img=img, mask=mask)
 
     with tempfile.TemporaryDirectory() as tmp:
