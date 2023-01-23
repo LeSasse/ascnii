@@ -39,7 +39,7 @@ def main():
         img = image.mean_img(img)
     
     with warnings.catch_warnings():
-        warnings.simplefilter("ignore")
+        warnings.filterwarnings("ignore")
         mask = datasets.load_mni152_template()
     
     mask = image.resample_to_img(mask, img)
