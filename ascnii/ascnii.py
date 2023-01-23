@@ -9,6 +9,8 @@ from pathlib import Path
 import ascii_magic
 from nilearn import datasets, image, plotting
 
+import warnings
+
 from .args import parse_args
 
 
@@ -35,8 +37,11 @@ def main():
     header = img.header
     if img.ndim == 4:
         img = image.mean_img(img)
-
-    mask = datasets.load_mni152_template()
+    
+    with warnings.catch_warnings():
+        warnings.simplefilter("ignore")
+        mask = datasets.load_mni152_template()
+    
     mask = image.resample_to_img(mask, img)
     img = image.math_img("img * mask", img=img, mask=mask)
 
