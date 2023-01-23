@@ -59,3 +59,20 @@ optional arguments:
 `ascnii example_img.nii.gz`:
 
 ![plot](./examples/example_default.png)
+
+## Increase the resolution with the `--columns` option:
+
+The `--columns` refers to the number of columns used in the terminal to display
+characters. Make sure to zoom out a bit, so your terminal has enough space and
+run `ascnii example_img.nii.gz --columns 600`:
+
+![plot](./examples/example_columns.png)
+
+## Change colormap and background color:
+
+In order to change the colormap choose any of the [matplotlib colormaps](https://matplotlib.org/stable/tutorials/colors/colormaps.html)
+and hand them over as strings to the `--colormap` option. At the same time you can
+also change the background color by handing any of the values listed for the
+`--background` option. Run `ascnii example_img.nii.gz -C 600 -m plasma -b white`:
+
+![plot](./examples/example_color.png)
