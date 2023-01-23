@@ -8,6 +8,10 @@ likely not work for other kinds of inputs (at the moment).
 
 # Set up:
 
+You can simply install from PyPI:
+
+`pip install ascnii`
+
 You may or may not want to set up a virtual environment.
 
 ```sh
@@ -15,7 +19,10 @@ python3 -m venv .examplevenv
 source .examplevenv/bin/activate
 pip install -U pip
 ```
-Then clone the repository to where you would like to install it.
+
+Alternatively, you can install from github.
+Clone the repository to where you would like to install it.
+
 ```
 git clone https://github.com/LeSasse/ascnii.git
 cd ascnii
