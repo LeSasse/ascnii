@@ -90,7 +90,7 @@ run `ascnii example_img.nii.gz --columns 600`:
 
 This is also useful if you want to output the ASCII image as an html to achieve higher
 resolution. For example `ascnii example_img.nii.gz --columns 700 -o example_html.html`
-results in the image [here](./examples/example_html.html).
+results in the image [here](https://raw.githack.com/LeSasse/ascnii/main/examples/example_html.html).
 
 ## Change colormap and background color:
 
