@@ -89,7 +89,7 @@ run `ascnii example_img.nii.gz --columns 600`:
 ![plot](./examples/example_columns.png)
 
 This is also useful if you want to output the ASCII image as an html to achieve higher
-resolution. For example `ascnii example_img.nii.gz --columns 1000 -o example_html.html`
+resolution. For example `ascnii example_img.nii.gz --columns 700 -o example_html.html`
 results in the image [here](./examples/example_html.html).
 
 ## Change colormap and background color:
