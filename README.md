@@ -34,7 +34,8 @@ pip install -e .
 Run `ascnii --help`:
 
 ```
-usage: ascnii [-h] [-H] [-C COLUMNS] [-c] [-m COLORMAP] [-b {black,red,red,green,yellow,blue,magenta,cyan,white}]
+usage: ascnii [-h] [-o OUTPUT] [-H] [-C COLUMNS] [-c] [-m COLORMAP]
+              [-b {black,red,red,green,yellow,blue,magenta,cyan,white}]
               [-t THRESHOLD] [-cc CUT_COORDS CUT_COORDS CUT_COORDS] [-a] [-d]
               nifti
 
@@ -45,9 +46,14 @@ positional arguments:
 
 optional arguments:
   -h, --help            show this help message and exit
+  -o OUTPUT, --output OUTPUT
+                        How to output the brain image. By default, prints to
+                        {'terminal'}. Otherwise, accepts a path to a html file or a
+                        txt file.
   -H, --header          If activated, print out the image header as well.
   -C COLUMNS, --columns COLUMNS
-                        Number of character columns (in terminal) to use for plotting.
+                        Number of character columns (in terminal) to use for
+                        plotting.
   -c, --colorbar        If activated, a colorbar is plotted with the brain images.
   -m COLORMAP, --colormap COLORMAP
                         Choose a colormap for the image.
@@ -57,9 +63,10 @@ optional arguments:
                         Threshold the given image below this value.
   -cc CUT_COORDS CUT_COORDS CUT_COORDS, --cut_coords CUT_COORDS CUT_COORDS CUT_COORDS
                         MNI coordinates at which to plot the image.
-  -a, --annotate        If activated, positions and left/right annotation are added.
-  -d, --draw_cross      If activated, a cross is drawn on the plot to indicate the cut position.
-
+  -a, --annotate        If activated, positions and left/right annotation are
+                        added.
+  -d, --draw_cross      If activated, a cross is drawn on the plot to indicate the
+                        cut position.
 ```
 
 # Examples:
@@ -80,6 +87,10 @@ Make sure to zoom out a bit, so your terminal has enough space and
 run `ascnii example_img.nii.gz --columns 600`:
 
 ![plot](./examples/example_columns.png)
+
+This is also useful if you want to output the ASCII image as an html to achieve higher
+resolution. For example `ascnii example_img.nii.gz --columns 1000 -o example_html.html`
+results in the image [here](./examples/example_html.html).
 
 ## Change colormap and background color:
 

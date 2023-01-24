@@ -36,7 +36,7 @@ def parse_args():
         help=(
             "How to output the brain image. By default, prints to"
             " {'terminal'}. Otherwise, accepts a path to a html file"
-            " or a txt file.",
+            " or a txt file."
         ),
     )
 
