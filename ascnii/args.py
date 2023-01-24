@@ -80,6 +80,14 @@ def parse_args():
     )
 
     parser.add_argument(
+        "-w",
+        "--widthratio",
+        default=1.9,
+        type=float,
+        help="Width-to-heigh ratio for ASCII characters.",
+    )
+    
+    parser.add_argument(
         "-t",
         "--threshold",
         default=0.1,

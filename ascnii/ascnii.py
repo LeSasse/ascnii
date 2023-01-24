@@ -54,6 +54,7 @@ def main():
             tmp / "plot.png",
             columns=args.columns,
             back=get_background_color(args.background),
+            width_ratio=args.widthratio,
             **input_params,
         )
 
