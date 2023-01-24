@@ -29,6 +29,18 @@ def parse_args():
     parser.add_argument("nifti", type=Path, help="Path to the NIfTI file.")
 
     parser.add_argument(
+        "-o",
+        "--output",
+        default="terminal",
+        type=str,
+        help=(
+            "How to output the brain image. By default, prints to"
+            " {'terminal'}. Otherwise, accepts a path to a html file"
+            " or a txt file.",
+        ),
+    )
+
+    parser.add_argument(
         "-H",
         "--header",
         action="store_true",

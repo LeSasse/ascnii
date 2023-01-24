@@ -4,30 +4,15 @@
 # License: AGPL
 
 import tempfile
+import warnings
 from pathlib import Path
 
 import ascii_magic
 from nilearn import datasets, image, plotting
 
-import warnings
-
 from .args import parse_args
-
-
-def get_background_color(color_string):
-    """Get background color object for ascii_magic from string."""
-    colors = {
-        "black": ascii_magic.Back.BLACK,
-        "red": ascii_magic.Back.RED,
-        "green": ascii_magic.Back.GREEN,
-        "yellow": ascii_magic.Back.YELLOW,
-        "blue": ascii_magic.Back.BLUE,
-        "magenta": ascii_magic.Back.MAGENTA,
-        "cyan": ascii_magic.Back.CYAN,
-        "white": ascii_magic.Back.WHITE,
-    }
-
-    return colors[color_string]
+from .utils import (get_background_color, get_input_params,
+                    get_output_function, get_output_type)
 
 
 def main():
@@ -37,12 +22,12 @@ def main():
     header = img.header
     if img.ndim == 4:
         img = image.mean_img(img)
-    
+
     with warnings.catch_warnings():
         warnings.filterwarnings("ignore")
         mask = datasets.load_mni152_brain_mask()
-    
-    mask = image.resample_to_img(mask, img, interpolation="nearest")    
+
+    mask = image.resample_to_img(mask, img, interpolation="nearest")
     img = image.math_img("img * mask", img=img, mask=mask)
 
     with tempfile.TemporaryDirectory() as tmp:
@@ -61,15 +46,19 @@ def main():
         )
 
         img_plotted.savefig(tmp / "plot.png")
-        img_ascii = (
-            ascii_magic.from_image_file(
-                tmp / "plot.png",
-                columns=args.columns,
-                back=get_background_color(args.background),
-            )
-            .replace(")", " ")
-            .replace("=", " ")
+
+        output_type = get_output_type(args.output)
+        input_params = get_input_params(output_type)
+
+        img_ascii = ascii_magic.from_image_file(
+            tmp / "plot.png",
+            columns=args.columns,
+            back=get_background_color(args.background),
+            **input_params,
         )
-        ascii_magic.to_terminal(img_ascii)
+
+        out_func = get_output_function(output_type)
+        out_func(args.output, img_ascii)
+
         if args.header:
             print(header)
